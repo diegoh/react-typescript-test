@@ -1,0 +1,13 @@
+{
+  "singleQuote": true,
+  "printWidth": 100,
+  "semi": true,
+  "trailingComma": "all",
+  "bracketSpacing": true,
+  "overrides": [
+    {
+      "files": "./coverage/**/**",
+      "excludeFiles": "./coverage"
+    }
+  ]
+}
