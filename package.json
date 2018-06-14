@@ -35,6 +35,14 @@
     "typescript": "^2.9.1"
   },
   "jest": {
+    "coverageThreshold": {
+      "global": {
+        "branches": 100,
+        "functions": 100,
+        "lines": 100,
+        "statements": 100
+      }
+    },
     "collectCoverageFrom": [
       "src/**/*.{js,jsx,tsx}",
       "!src/index.tsx",
