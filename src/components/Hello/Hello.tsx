@@ -1,22 +1,26 @@
 import * as React from 'react';
 
 export interface IProps {
-  name: string;
+  languageName: string;
   enthusiasmLevel?: number;
   onIncrement?: () => void;
   onDecrement?: () => void;
 }
 
-function Hello({ enthusiasmLevel = 1, name, onIncrement, onDecrement }: IProps) {
+function Hello({ enthusiasmLevel = 1, languageName, onIncrement, onDecrement }: IProps) {
   if (enthusiasmLevel <= 0) {
     throw new Error('More enthusiasm please');
   }
   return (
     <div className="hello">
-      <div className="greeting">Hello {name + getExclamationMarks(enthusiasmLevel)}</div>
+      <div className="greeting">Hello {languageName + getExclamationMarks(enthusiasmLevel)}</div>
       <div className="enthusiasm">
-        <button onClick={onDecrement}>-</button>
-        <button onClick={onIncrement}>+</button>
+        <button className="decrementButton" onClick={onDecrement}>
+          -
+        </button>
+        <button className="incrementButton" onClick={onIncrement}>
+          +
+        </button>
       </div>
     </div>
   );

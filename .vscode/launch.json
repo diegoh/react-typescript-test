@@ -16,20 +16,13 @@
       }
     },
     {
+      "name": "Debug CRA Tests",
       "type": "node",
       "request": "launch",
-      "name": "Jest All",
-      "program": "${workspaceFolder}/node_modules/jest/bin/jest",
-      "args": ["--runInBand"],
-      "console": "integratedTerminal",
-      "internalConsoleOptions": "neverOpen"
-    },
-    {
-      "type": "node",
-      "request": "launch",
-      "name": "Jest Current File",
-      "program": "${workspaceFolder}/node_modules/jest/bin/jest",
-      "args": ["${relativeFile}"],
+      "runtimeExecutable": "${workspaceRoot}/node_modules/.bin/react-scripts-ts",
+      "args": ["test", "--runInBand", "--no-cache", "--env=jsdom"],
+      "cwd": "${workspaceRoot}",
+      "protocol": "inspector",
       "console": "integratedTerminal",
       "internalConsoleOptions": "neverOpen"
     }
