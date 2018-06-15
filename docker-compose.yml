@@ -1,0 +1,9 @@
+# docker run -d --name myApp -p 8080:80 my-app
+version: '3'
+
+services:
+  web:
+    image: my-app
+    build: .
+    ports:
+    - "8080:80"
