@@ -7,7 +7,7 @@ export interface IProps {
   onDecrement?: () => void;
 }
 
-function Hello({ enthusiasmLevel = 1, languageName, onIncrement, onDecrement }: IProps) {
+function Hello({ languageName, enthusiasmLevel = 1, onIncrement, onDecrement }: IProps) {
   if (enthusiasmLevel <= 0) {
     throw new Error('More enthusiasm please');
   }

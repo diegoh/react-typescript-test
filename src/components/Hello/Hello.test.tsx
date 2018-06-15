@@ -1,10 +1,16 @@
 import { shallow } from 'enzyme';
+import 'jest-enzyme';
 import * as React from 'react';
 
 import Hello from './Hello';
 
 describe('Hello', () => {
   it('renders successfully', () => {
+    const component = shallow(<Hello languageName="Test" enthusiasmLevel={5} />);
+    expect(component).toExist();
+  });
+
+  it('has className .hello', () => {
     const component = shallow(<Hello languageName="Test" enthusiasmLevel={5} />);
     expect(component.find('.hello').length).toEqual(1);
   });

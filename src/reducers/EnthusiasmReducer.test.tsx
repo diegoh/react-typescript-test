@@ -4,7 +4,7 @@ import {
   IDecrementEnthusiasm,
   IncrementEnthusiasm,
   incrementEnthusiasm,
-} from '../actions';
+} from '../actions/EnthusiasmActions';
 import EnthusiasmReducer from './EnthusiasmReducer';
 
 describe('EnthusiasmReducer', () => {
@@ -15,22 +15,42 @@ describe('EnthusiasmReducer', () => {
     incrementAction = incrementEnthusiasm();
     decrementAction = decrementEnthusiasm();
   });
-  it('returns 2 if incrementing the first time without an initial value', () => {
-    expect(EnthusiasmReducer(undefined, incrementAction)).toEqual(2);
+  it('returns 1 if incrementing the first time without an initial value', () => {
+    const initial = undefined;
+    const expected = 2;
+    expect(EnthusiasmReducer(initial, incrementAction)).toEqual(expected);
   });
   it('increases when the increment action is called', () => {
-    expect(EnthusiasmReducer(100, incrementAction)).toEqual(101);
+    const initial = 100;
+    const expected = 101;
+
+    expect(EnthusiasmReducer(initial, incrementAction)).toEqual(expected);
   });
 
   describe('decrement action', () => {
     it('decreases the value', () => {
-      expect(EnthusiasmReducer(3, decrementAction)).toEqual(2);
+      const initial = 3;
+      const expected = 2;
+
+      expect(EnthusiasmReducer(initial, decrementAction)).toEqual(expected);
     });
     it('returns minimum value 1', () => {
-      expect(EnthusiasmReducer(1, decrementAction)).toEqual(1);
+      const initial = 1;
+      const expected = 1;
+
+      expect(EnthusiasmReducer(initial, decrementAction)).toEqual(expected);
+    });
+    it('returns minimum value of 1 if given 0', () => {
+      const initial = 0;
+      const expected = 1;
+
+      expect(EnthusiasmReducer(initial, decrementAction)).toEqual(expected);
     });
     it('returns 1 given a negative', () => {
-      expect(EnthusiasmReducer(-100, decrementAction)).toEqual(1);
+      const initial = -100;
+      const expected = 1;
+
+      expect(EnthusiasmReducer(initial, decrementAction)).toEqual(expected);
     });
   });
 });

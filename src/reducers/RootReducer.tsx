@@ -1,14 +1,14 @@
-import { combineReducers, Reducer } from 'redux';
+import { combineReducers, Reducer, ReducersMapObject } from 'redux';
 
 import { IStoreState } from '../types';
 import EnthusiasmReducer from './EnthusiasmReducer';
 import LanguageReducer from './LanguageReducer';
 
-export const reducers = {
-  enthusiasm: EnthusiasmReducer,
+export const reducers: ReducersMapObject<IStoreState> = {
+  enthusiasmLevel: EnthusiasmReducer,
   languageName: LanguageReducer,
 };
 
-const RootReducer = combineReducers<Reducer<IStoreState>>(reducers);
+const RootReducer: Reducer<IStoreState> = combineReducers(reducers);
 
 export default RootReducer;

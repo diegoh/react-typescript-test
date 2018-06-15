@@ -1,16 +1,29 @@
+import { combineReducers, Reducer, ReducersMapObject } from 'redux';
+
+import { IStoreState } from '../types';
 import EnthusiasmReducer from './EnthusiasmReducer';
 import LanguageReducer from './LanguageReducer';
-import { reducers } from './RootReducer';
+import RootReducer, { reducers } from './RootReducer';
 
 describe('RootReducer', () => {
-  it('returns a combined reducer', () => {
-    const expectedReducers = {
-      enthusiasm: EnthusiasmReducer,
+  let expectedReducers: ReducersMapObject<IStoreState>;
+  let expected: Reducer<IStoreState>;
+
+  beforeAll(() => {
+    expectedReducers = {
+      enthusiasmLevel: EnthusiasmReducer,
       languageName: LanguageReducer,
     };
+    expected = combineReducers(expectedReducers);
+  });
 
-    expect(typeof reducers.enthusiasm).toBe(typeof expectedReducers.enthusiasm);
-    expect(typeof reducers.languageName).toBe(typeof expectedReducers.languageName);
-    expect(reducers).toMatchObject(expectedReducers);
+  it('returns a combined reducer', () => {
+    const received = RootReducer.toString();
+    const expectedStr = expected.toString();
+    expect(received).toBe(expectedStr);
+  });
+
+  it('receives the correct reducers', () => {
+    expect(reducers).toEqual(expectedReducers);
   });
 });
