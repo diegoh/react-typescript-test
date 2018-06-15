@@ -8,6 +8,7 @@
     "sourceMap": true,
     "allowJs": true,
     "jsx": "react",
+    "tsx": "react",
     "moduleResolution": "node",
     "rootDir": "src",
     "forceConsistentCasingInFileNames": true,
