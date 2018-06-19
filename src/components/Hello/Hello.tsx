@@ -12,13 +12,22 @@ function Hello({ languageName, enthusiasmLevel = 1, onIncrement, onDecrement }: 
   if (enthusiasmLevel <= 0) {
     throw new Error('More enthusiasm please');
   }
+
+  const decrement = onDecrement ? <Button text="-" action={onDecrement} /> : null;
+  const increment = onIncrement ? <Button text="+" action={onIncrement} /> : null;
+
+  const buttons =
+    increment || decrement ? (
+      <div className="enthusiasm">
+        {decrement}
+        {increment}
+      </div>
+    ) : null;
+
   return (
     <div className="hello">
       <div className="greeting">Hello {languageName + getExclamationMarks(enthusiasmLevel)}</div>
-      <div className="enthusiasm">
-        <Button text="-" action={onDecrement!} classNames="decrementButton" />
-        <Button text="+" action={onIncrement!} classNames="incrementButton" />
-      </div>
+      {buttons}
     </div>
   );
 }

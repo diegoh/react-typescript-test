@@ -1,30 +1,19 @@
-import { shallow, ShallowWrapper } from 'enzyme';
+import { mount, ReactWrapper } from 'enzyme';
 import * as React from 'react';
 
 import Button from './Button';
 
 describe('Button', () => {
-  let component: ShallowWrapper<JSX.Element>;
-  const classNames: string = 'class-one class-two';
+  let component: ReactWrapper<JSX.Element>;
   const mockFn: jest.Mock = jest.fn();
   const defaultText: string = 'My Button';
 
   beforeEach(() => {
-    component = shallow(<Button action={mockFn} text={defaultText} classNames={classNames} />);
+    component = mount(<Button action={mockFn} text={defaultText} />);
   });
 
   it('is a native button', () => {
     expect(component.is('button')).toBeTruthy();
-  });
-
-  it('has the correct classes assigned', () => {
-    expect(component.hasClass('class-one')).toBeTruthy();
-    expect(component.hasClass('class-two')).toBeTruthy();
-  });
-
-  it('has the correct classes assigned', () => {
-    const comp = shallow(<Button action={mockFn} text={defaultText} classNames="" />);
-    expect(comp.hasClass('class-one')).toBeFalsy();
   });
 
   it('shows the right text', () => {
@@ -32,7 +21,8 @@ describe('Button', () => {
   });
 
   it('calls the action function', () => {
-    component.simulate('click');
+    const comp = component;
+    comp.simulate('click');
     expect(mockFn).toHaveBeenCalled();
   });
 });

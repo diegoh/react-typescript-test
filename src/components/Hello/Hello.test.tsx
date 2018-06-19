@@ -1,7 +1,6 @@
-import { shallow, mount } from 'enzyme';
+import { mount, shallow } from 'enzyme';
 import 'jest-enzyme';
 import * as React from 'react';
-
 import Hello from './Hello';
 
 describe('Hello', () => {
@@ -40,14 +39,22 @@ describe('Hello', () => {
   it('decrement action is called', () => {
     const action: jest.Mock<() => void> = jest.fn();
     const component = mount(<Hello languageName="Test" enthusiasmLevel={5} onDecrement={action} />);
-    component.find('.decrementButton').simulate('click');
+    component
+      .find('.enthusiasm')
+      .children()
+      .first()
+      .simulate('click');
     expect(action).toHaveBeenCalledTimes(1);
   });
 
   it('increment action is called', () => {
     const action: jest.Mock<() => void> = jest.fn();
     const component = mount(<Hello languageName="Test" enthusiasmLevel={5} onIncrement={action} />);
-    component.find('.incrementButton').simulate('click');
+    component
+      .find('.enthusiasm')
+      .children()
+      .first()
+      .simulate('click');
     expect(action).toHaveBeenCalledTimes(1);
   });
 });

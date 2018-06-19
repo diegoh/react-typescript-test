@@ -1,7 +1,6 @@
 import { mount, ReactWrapper } from 'enzyme';
 import * as React from 'react';
 import { Provider } from 'react-redux';
-
 import {
   decrementEnthusiasm,
   IDecrementEnthusiasm,
@@ -9,6 +8,7 @@ import {
   IncrementEnthusiasm,
 } from '../actions/EnthusiasmActions';
 import * as constants from '../constants';
+
 import { IStoreState, store } from '../types';
 import Hello, { IConnectedHelloDispatch, mapDispatchToProps, mapStateToProps } from './Hello';
 
