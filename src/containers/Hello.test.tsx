@@ -1,11 +1,6 @@
 import { mount, ReactWrapper } from 'enzyme';
-// import { JSDOM } from 'jsdom';
 import * as React from 'react';
 import { Provider } from 'react-redux';
-
-// const doc = new JSDOM('<!doctype html><html><body></body></html>');
-// global.document = doc;
-// global.window = doc.defaultView;
 
 import {
   decrementEnthusiasm,

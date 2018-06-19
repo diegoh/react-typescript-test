@@ -1,4 +1,4 @@
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 import 'jest-enzyme';
 import * as React from 'react';
 
@@ -39,10 +39,15 @@ describe('Hello', () => {
 
   it('decrement action is called', () => {
     const action: jest.Mock<() => void> = jest.fn();
-    const component = shallow(
-      <Hello languageName="Test" enthusiasmLevel={5} onDecrement={action} />,
-    );
+    const component = mount(<Hello languageName="Test" enthusiasmLevel={5} onDecrement={action} />);
     component.find('.decrementButton').simulate('click');
+    expect(action).toHaveBeenCalledTimes(1);
+  });
+
+  it('increment action is called', () => {
+    const action: jest.Mock<() => void> = jest.fn();
+    const component = mount(<Hello languageName="Test" enthusiasmLevel={5} onIncrement={action} />);
+    component.find('.incrementButton').simulate('click');
     expect(action).toHaveBeenCalledTimes(1);
   });
 });

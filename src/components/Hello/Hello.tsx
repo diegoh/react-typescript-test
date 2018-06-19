@@ -1,6 +1,7 @@
 import * as React from 'react';
+import Button from '../Button/Button';
 
-export interface IProps {
+interface IProps {
   languageName: string;
   enthusiasmLevel?: number;
   onIncrement?: () => void;
@@ -15,12 +16,8 @@ function Hello({ languageName, enthusiasmLevel = 1, onIncrement, onDecrement }: 
     <div className="hello">
       <div className="greeting">Hello {languageName + getExclamationMarks(enthusiasmLevel)}</div>
       <div className="enthusiasm">
-        <button className="decrementButton" onClick={onDecrement}>
-          -
-        </button>
-        <button className="incrementButton" onClick={onIncrement}>
-          +
-        </button>
+        <Button text="-" action={onDecrement!} classNames="decrementButton" />
+        <Button text="+" action={onIncrement!} classNames="incrementButton" />
       </div>
     </div>
   );
